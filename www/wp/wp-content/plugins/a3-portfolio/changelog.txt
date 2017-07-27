@@ -1,0 +1,90 @@
+=== Changelog ===
+
+= 1.3.1 - 2015/06/03 =
+* Tweak - Security Hardening. Removed all php file_put_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Tweak - Security Hardening. Removed all php file_get_contents functions in the plugin framework and replace with the WP_Filesystem API
+* Fix - Update dynamic stylesheet url in uploads folder to the format //domain.com/ so it's always is correct when loaded as http or https
+
+= 1.3.0 - 2015/05/11 =
+* Feature - Added support for setting a custom permalink structure for Portfolio page
+* Feature - Added support change the permalink structure for Portfolio Category page
+* Feature - Added support change the permalink structure for Portfolio Tag page
+* Tweak - Added new options into Settings -> Permalinks page on Dashboard
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.2
+* Tweak - Put <code>%[portfoliopage]%</code> as arguments for $wpdb-prepare than parse it direct to mysql query
+* Tweak - Don't auto added #hash on url bar of browser when first reload the page has portfolios
+
+= 1.2.1 - 2015/04/21 =
+* Tweak - Tested and Tweaked for full compatibility with WordPress Version 4.2.0
+* Tweak - Changed <code>dbDelta()</code> function to <code>$wpdb->query()</code> for creating plugin table database.
+* Tweak - Added style for social icon to a3.portfolio
+* Tweak - Update style of plugin framework. Removed the [data-icon] selector to prevent conflict with other plugins that have font awesome icons
+* Fix - Thumb images are not showing on single portfolio page. Added <code>a3-portfolio-lazy-hidden</code> into <code>a3.portfolio.single.js</code> file
+
+= 1.2.0 - 2015/04/17 =
+* Feature - Added option to show the first part of the Item description text on item cards. Description shows on footer of the card.
+* Feature - Added 'Description Height' feature to set number lines of description text that shows on item cards. Option is 1 - 6 lines
+* Tweak - Numerous a3.portfolio.js script file tweaks to add support for newly released a3 Portfolio shortcode add-on.
+* Dev - Defined <code>@desc_background_color</code> variable inside a3.portfolio.base.less so dev can change the background color for new Description feature. Default color is <code>#555555</code>
+* Dev - Added .a3-portfolio-card-description class into a3.portfolio.less so dev can change the default style for the new Item Description feature and compile own style for theme
+* Dev - Defined 'a3_portfolio_card_item_description' function to get the description container of portfolio
+* Dev - Defined 'a3_portfolio_main_page_scripts' function that enqueues all portfolio scripts and supports load portfolio container. This adds support for 3rd party plugins including the new a3 Portfolio Shortcodes add-on to call portfolio script from another page
+
+= 1.1.1 - 2015/04/01 =
+* Tweak - Added New Release a3 Portfolio Item Switcher Add-On plugin Card to the Add-Ons menu
+* Tweak - Mobile UX improvement - increased the size of the item expander close X icon in mobile browsers so that it is easier to tap
+* Tweak - Mobile UI improvement - added border to the bottom the Item expander gallery main image container to better define the image
+* Tweak - Updated the plugins wordpress.org description.
+* Dev - Convert function inside a3.portfolio.js file to global function so that the function can be called from another plugin
+* Dev - Defined the trigger 'a3_portfolio_open_expander' when the expander is opened
+* Dev - Changed WP_CONTENT_DIR to WP_PLUGIN_DIR. Is set a custom WordPress file structure then it can get the correct path of plugin
+
+= 1.1.0 - 2015/03/27 =
+* Feature - Added new global option - Post Display tab - Single Portfolio Template option of 1 or 2 column layout
+* Feature - Added new post meta for Portfolio Item - Post Display - admin can override the global 1 or 2 Column layout option for post item.
+* Dev - Defined new function 'a3_portfolio_single_get_layout_column' to get layout column for each single post item
+* Dev - Updated header comment in portfolio template files from '/portfolio/' to '/portfolios/' for template over-rides from theme.
+* Dev - Note! Updated single-portfolio.php template file for new Single Layout Column. Custom template over-rides will need updating
+* Dev - Note! Updated content-single-portfolio.php template file for new feature Single Layout Column. Custom template over rides will need updating.
+* Tweak - Tweak the Meta Box UI with checkbox switcher to toggle 1 Column | 2 Column layout
+
+= 1.0.5 - 2015/03/18 =
+* Tweak - Tested and tweaked for 100% compatibility with WordPress Version 4.1.1
+* Tweak - Added jQuery.lazyLoadXT.onshow.addClass='lazy-hidden a3-portfolio-lazy-hidden'; into Portfolio script so that it still show the image for portfolio when site is using a3 lazy load
+* Fix - Called wp_enqueue_script( 'jquery-masonry' ); when Portfolio page is showing to fix the javascript error that masonry script is not function
+
+= 1.0.4 - 2015/01/28 =
+* Tweak - Add New Release a3 Portfolio Dynamic Stylesheet Add-On plugin Card to the Add-Ons menu
+* Tweak - Added an image to the a3 Portfolio Isotope Add-On Card on the Add-Ons menu
+
+= 1.0.3 - 2015/01/26 =
+* Tweak - Update background of portfolio mobile control to be the same background color of item expander.
+* Dev - Defined 'a3_portfolio_cards_title_class' filter tag. Developers can filter to add new class name for Card Title on Card Layout
+* Dev - Defined 'a3_portfolio_backend_launch_button_text' filter tag. Developers can filter to change Launch button text that shows inside the item Expander
+* Fix - Change <code>parameter == undefined</code> to <code>typeof parameter === 'undefined'</code> inside portfolio script to fix JavaScript undefined parameter error
+
+= 1.0.2 - 2015/01/12 =
+* Fix - Fatal Error on first install on some installs. Hook the 'set_default_settings' function into 'init' action instead hook into 'register_activation_hook'
+* Fix - Item main image caption not showing. Updated if <code>( ! is_array( $gallery ) )</code> to <code>if ( is_array( $gallery ) )</code>
+* Credit - Thanks to wordpress.org memeber [jmdev](https://wordpress.org/support/profile/jmdev) for reporting the issue.
+
+= 1.0.1 - 2015/01/05 =
+* Feature - Add a3 Portfolio Isotope Add-On Free plugin download from the Add-On's menu
+* Tweak - Updated the plugins description with details about the Isotope Add-On plugin.
+* Tweak - Link from the Isotope Add-On plugin to http://a3rev.com/my-account/free-downloads/
+* Tweak - Add Registration and Login features to the /free-downloads/ page
+* Tweak - Add License agreement for first download of a3 Portfolio Isotope plugin
+* Tweak - Added effect mouse over on the card for Add-On page
+* Tweak - Remove custom colour for Add-On submenu title.
+* Dev - Hooked framework code into 'plugins_loaded' action. Allows developers to add their child plugin admin menu as a a3 Portfolio sub menu
+* Dev - Defined 'a3_portfolio_before_portfolio_enqueue_styles' action tag.
+* Dev - Defined 'a3_portfolio_after_portfolio_enqueue_styles' action tag.
+* Dev - Defined 'a3_portfolio_before_portfolio_enqueue_styles_rtl' action tag.
+* Dev - Defined 'a3_portfolio_after_portfolio_enqueue_styles_rtl' action tag.
+* Dev - Defined 'a3_portfolio_before_single_enqueue_styles' action tag.
+* Dev - Defined 'a3_portfolio_after_single_enqueue_styles' action tag.
+* Dev - Defined 'a3_portfolio_before_single_enqueue_styles_rtl' action tag.
+* Dev - Defined 'a3_portfolio_after_single_enqueue_styles_rtl' action tag.
+
+= 1.0.0 - 2014/12/16 =
+* First release.
